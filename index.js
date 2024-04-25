@@ -13,3 +13,5 @@ wsServer.on("connection", (wsClient) => {
     console.log("User logout");
   });
 });
+
+console.log("Server is working on port 9000");
