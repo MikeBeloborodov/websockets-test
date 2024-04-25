@@ -37,6 +37,7 @@ module.exports = {
     },
     compress: true,
     port: 4000,
+    allowedHosts: "all",
   },
   mode: "production",
 };
