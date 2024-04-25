@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 export const App = () => {
   const url = `ws://${process.env.URL}`;
+  const [message, setMessage] = useState("");
 
   function connectToChat() {
     const websocket = new WebSocket(url);
@@ -13,13 +16,19 @@ export const App = () => {
       );
     });
     websocket.addEventListener("message", (message) => {
-      console.log(message);
+      const msg = JSON.parse(message.data);
+      console.log(msg);
     });
+  }
+
+  function onInput(e: React.ChangeEvent) {
+    setMessage(e.target.nodeValue);
   }
 
   return (
     <>
       <h1>Welcome to the chat</h1>
+      <input type="text" value={message} onChange={onInput} />
       <button onClick={connectToChat}>Start</button>
     </>
   );
