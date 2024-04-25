@@ -6,7 +6,8 @@ wsServer.on("connection", (wsClient) => {
   console.log("New user");
   wsClient.send("Hello!");
   wsClient.on("message", (message) => {
-    console.log(message);
+    const msg = JSON.parse(message);
+    console.log(msg);
   });
   wsClient.on("close", () => {
     console.log("User logout");
