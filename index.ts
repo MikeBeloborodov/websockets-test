@@ -9,7 +9,7 @@ type TMessage = {
 
 wsServer.on("connection", (wsClient) => {
   console.log("New user");
-  wsClient.send("Hello!");
+  wsClient.send(JSON.stringify({ message: "Connected", name: "Admin" }));
 
   wsClient.on("message", (message: string) => {
     const msg: TMessage = JSON.parse(message);
@@ -17,7 +17,7 @@ wsServer.on("connection", (wsClient) => {
     console.log(msg);
 
     wsServer.clients.forEach((client) => {
-      client.send(message);
+      client.send(JSON.stringify(message));
     });
   });
 
