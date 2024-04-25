@@ -21,6 +21,7 @@ export const App = () => {
     websocket.addEventListener("message", (message) => {
       const msg = JSON.parse(message.data);
       console.log(msg);
+      setServerMessages((oldVals) => [...oldVals, msg]);
     });
     setWebsoket(websocket);
     setIsChat(true);
@@ -41,6 +42,7 @@ export const App = () => {
         message,
       }),
     );
+    setMessage("");
   }
 
   return (
