@@ -17,7 +17,7 @@ wsServer.on("connection", (wsClient) => {
     console.log(msg);
 
     wsServer.clients.forEach((client) => {
-      client.send(message);
+      client.send(JSON.stringify(msg));
     });
   });
 

@@ -20,19 +20,20 @@ export const App = () => {
     });
     websocket.addEventListener("message", (message) => {
       const msg = JSON.parse(message.data);
-      console.log(msg);
       setServerMessages((oldVals) => [...oldVals, msg]);
     });
     setWebsoket(websocket);
     setIsChat(true);
   }
 
-  function onInput(e: React.ChangeEvent) {
-    setMessage(e.target.nodeValue);
+  function onInput(e: React.SyntheticEvent) {
+    const target = e.target as HTMLInputElement;
+    setMessage(target.value);
   }
 
   function assignName(e: React.ChangeEvent) {
-    setName(e.target.nodeValue);
+    const target = e.target as HTMLInputElement;
+    setName(target.value);
   }
 
   function sendMessage() {
