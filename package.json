@@ -4,7 +4,7 @@
   "description": "Testing websocket server",
   "main": "index.js",
   "scripts": {
-    "prod": "npx webpack --config webpack.config.js --mode=production; mv -v ./dist /var/www/html; node index.js ",
+    "prod": "npx webpack --config webpack.config.js --mode=production; sudo rm -rf /var/www/html/*; sudo mv -v ./dist/* /var/www/html; tsc index.ts; node index.js ",
     "dev": "node index.js & npx webpack serve"
   },
   "keywords": [],
